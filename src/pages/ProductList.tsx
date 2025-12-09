@@ -2,7 +2,7 @@
 
 import React from 'react'
 // import Header from '../components/Header'
-import ProductCard from '../components/ProductCard'
+import ProductCard from '../components/car/ProductCard'
 import { mockProducts } from '../data/products'
 
 const ProductList: React.FC = () => {

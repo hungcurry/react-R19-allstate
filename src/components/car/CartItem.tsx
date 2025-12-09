@@ -1,18 +1,17 @@
 // 購物車項目元件
 import type { SyntheticEvent } from 'react';
 // import React from 'react';
-// import React from 'react';
-import type { CartItem } from '../types';
+import type { CartItem } from '../../types';
 
 // ~useContext + useReducer方式
-// import { useCart } from '@/context/complex/CartContext'
+import { useCart } from '@/context/complex/CartContext'
 
 // ~Redux方式
 // import { useDispatch } from 'react-redux';
 // import { updateQuantity , removeFromCart } from '@/store/redux/cartSlice';
 
 // ~Zustand方式
-import { useCartStore } from '@/store/zustand/useCartStore';
+// import { useCartStore } from '@/store/zustand/useCartStore';
 
 type TProps = {
   data: CartItem;
@@ -20,35 +19,35 @@ type TProps = {
 
 const CartItemComponent= ({ data } : TProps) => {
   // ~useContext + useReducer方式
-  // const { updateQuantity, removeFromCart } = useCart();
+  const { updateQuantity, removeFromCart } = useCart();
 
   // ~Redux方式
   // const dispatch = useDispatch();
 
   // ~Zustand方式
-  const updateQuantity = useCartStore((s) => s.updateQuantity);
-  const removeFromCart = useCartStore((s) => s.removeFromCart);
+  // const updateQuantity = useCartStore((s) => s.updateQuantity);
+  // const removeFromCart = useCartStore((s) => s.removeFromCart);
 
   const handleQuantityChange = (newQuantity: number) => {
     // ~useContext + useReducer方式
-    // updateQuantity(data.product.id, newQuantity);
+    updateQuantity(data.product.id, newQuantity);
 
     // ~Redux方式
     // dispatch(updateQuantity({ productId: data.product.id, quantity: newQuantity }));
 
     // ~Zustand方式
-    updateQuantity(data.product.id, newQuantity);
+    // updateQuantity(data.product.id, newQuantity);
   };
 
   const handleRemove = () => {
     // ~useContext + useReducer方式
-    // removeFromCart(data.product.id);
+    removeFromCart(data.product.id);
 
     // ~Redux方式
     // dispatch(removeFromCart(data.product.id));
 
     // ~Zustand方式
-    removeFromCart(data.product.id);
+    // removeFromCart(data.product.id);
   };
 
   const handleError = (e:SyntheticEvent<HTMLImageElement>) => {

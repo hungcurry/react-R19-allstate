@@ -3,10 +3,10 @@ import { createContext, useContext } from 'react'
 // 影響檔案
 // ```jsx
 // // 資料
-// context/ProductContext.tsx
+// context/pure/ProductContext.tsx
 
 // // 元件
-// ProvidProduct.tsx
+// components/ProvidProduct.tsx
 // ```
 
 export type TProduct = {

@@ -1,73 +1,90 @@
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## React版本
+```jsx
+使用v19 + Routerv7
+專案是使用購物車範例
+三種全域管理檔案
+1. useContext + useReducer
+2. Redux
+3. Zustand
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## React 影響檔案
+```jsx
+App.tsx
+Navbar.tsx
+ProductCard.tsx
+Cart.tsx
+CartItem.tsx
 ```
+
+## 啟動開發伺服器
+
+```sh
+npm run dev
+```
+
+## 資料夾結構
+
+```
+src/
+├─ main.tsx            # App 入口
+├─ App.tsx             # 應用主體 + 路由
+├─ index.css           # 全域樣式
+│
+├─ contexts/           # 所有 Context Provider
+│  ├─ pure/            # 純 useContext
+│  │  ├─ ThemeContext.tsx
+│  │  ├─ UserContext.tsx
+│  │  └─ LanguageContext.tsx
+│  │
+│  ├─ complex/         # useContext + useReducer
+│  │  ├─ CartContext.tsx
+│  │  └─ CountContext.tsx
+│  │
+│  └─ index.ts         # 可選：統一 export
+│
+├─ reducers/           # 純 reducer
+│  ├─ cartReducer.ts
+│  └─ countReducer.ts
+│
+├─ stores/             # Zustand / Redux Toolkit
+│  ├─ useCartStore.ts
+│  └─ userStore.ts
+│
+├─ components/         # 共用元件
+│  ├─ Navbar.tsx
+│  ├─ Header.tsx
+│  ├─ ProductCard.tsx
+│  └─ CartItem.tsx
+│
+├─ pages/              # 頁面元件
+│  ├─ ProductList.tsx
+│  └─ Cart.tsx
+│
+├─ types/              # 型別定義
+│  └─ index.ts
+│
+└─ data/               # 靜態資料（mock data）
+   └─ products.ts
+```
+
+## 用途說明
+
+- `components/`：可重用 UI 元件
+- [`context/`](src/context/CartContext.tsx )：React Context 狀態管理
+- `data/`：靜態產品資料
+- `pages/`：各頁面主體
+- `types/`：TypeScript 型別
+
+---
+
+## 常用指令
+
+| 指令             | 說明                   |
+|------------------|------------------------|
+| npm run dev      | 啟動本地開發伺服器     |
+| npm run build    | 建置專案               |
+| npm run preview  | 預覽建置產物           |
+| npm run lint     | 程式碼靜態檢查         |
+
+---

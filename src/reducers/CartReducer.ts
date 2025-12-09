@@ -1,9 +1,10 @@
-type state = {
+export type state = {
   id: string | number;
+  name?: string;
 };
 // ★ state 應該是陣列！
-type TState = state[];
-type TAction =
+export type TState = state[];
+export type TAction =
   | { type: "ADD"; payload: state }
   | { type: "REMOVE"; payload: string | number };
 

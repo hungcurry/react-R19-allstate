@@ -4,13 +4,13 @@ import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 // ~useContext + useReducer方式
-// import { CartProvider } from '@/context/complex/CartContext'
+import { CartProvider } from '@/context/complex/CartContext'
 
 // ~Redux方式
 // import { Provider } from 'react-redux';
 // import { store } from '@/store/redux/store';
 
-import Navbar from './components/Navbar' 
+import Navbar from './components/car/Navbar' 
 // Pages
 import Home from './pages/Home'
 import ProductList from './pages/ProductList'
@@ -28,17 +28,17 @@ const App: React.FC = () => {
     // CartItem.tsx
 
     // ~useContext + useReducer方式
-    // <CartProvider>
-    //   <div className="App">
-    //     <Navbar />
+    <CartProvider>
+      <div className="App">
+        <Navbar />
 
-    //     <Routes>
-    //       <Route path="/" element={<Home />} />
-    //       <Route path="/products" element={<ProductList />} />
-    //       <Route path="/cart" element={<Cart />} />
-    //     </Routes>
-    //   </div>
-    // </CartProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </div>
+    </CartProvider>
 
     // ~Redux方式
     // <Provider store={store}>
@@ -54,15 +54,15 @@ const App: React.FC = () => {
     // </Provider>
 
     // ~Zustand方式
-    <div className="App">
-      <Navbar />
+    // <div className="App">
+    //   <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<ProductList />} />
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
-    </div>
+    //   <Routes>
+    //     <Route path="/" element={<Home />} />
+    //     <Route path="/products" element={<ProductList />} />
+    //     <Route path="/cart" element={<Cart />} />
+    //   </Routes>
+    // </div>
 
   )
 }
