@@ -4,11 +4,11 @@ import type { SyntheticEvent } from 'react';
 import type { CartItem } from '../../types';
 
 // ~useContext + useReducer方式
-import { useCart } from '@/context/complex/CartContext'
+// import { useCart } from '@/context/complex/CartContext'
 
 // ~Redux方式
-// import { useDispatch } from 'react-redux';
-// import { updateQuantity , removeFromCart } from '@/store/redux/cartSlice';
+import { useDispatch } from 'react-redux';
+import { updateQuantity , removeFromCart } from '@/store/redux/cartSlice';
 
 // ~Zustand方式
 // import { useCartStore } from '@/store/zustand/useCartStore';
@@ -19,10 +19,10 @@ type TProps = {
 
 const CartItemComponent= ({ data } : TProps) => {
   // ~useContext + useReducer方式
-  const { updateQuantity, removeFromCart } = useCart();
+  // const { updateQuantity, removeFromCart } = useCart();
 
   // ~Redux方式
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   // ~Zustand方式
   // const updateQuantity = useCartStore((s) => s.updateQuantity);
@@ -30,10 +30,10 @@ const CartItemComponent= ({ data } : TProps) => {
 
   const handleQuantityChange = (newQuantity: number) => {
     // ~useContext + useReducer方式
-    updateQuantity(data.product.id, newQuantity);
+    // updateQuantity(data.product.id, newQuantity);
 
     // ~Redux方式
-    // dispatch(updateQuantity({ productId: data.product.id, quantity: newQuantity }));
+    dispatch(updateQuantity({ productId: data.product.id, quantity: newQuantity }));
 
     // ~Zustand方式
     // updateQuantity(data.product.id, newQuantity);
@@ -41,10 +41,10 @@ const CartItemComponent= ({ data } : TProps) => {
 
   const handleRemove = () => {
     // ~useContext + useReducer方式
-    removeFromCart(data.product.id);
+    // removeFromCart(data.product.id);
 
     // ~Redux方式
-    // dispatch(removeFromCart(data.product.id));
+    dispatch(removeFromCart(data.product.id));
 
     // ~Zustand方式
     // removeFromCart(data.product.id);
