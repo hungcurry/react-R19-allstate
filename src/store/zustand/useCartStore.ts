@@ -28,6 +28,7 @@ type TCartStore = {
   getTotalPrice: () => number;
 };
 
+// #region v5寫法 + devtools
 // ----------- v5寫法 + devtools -----------
 // export const useCartStore = create<TCartStore>()(
 //   devtools(
@@ -124,7 +125,7 @@ type TCartStore = {
 //     }
 //   )
 // );
-
+// #endregion
 
 
 // ----------- v5寫法 + devtools + Immer -----------
@@ -153,8 +154,8 @@ export const useCartStore = create<TCartStore>()(
       addToCart: (product) => {
         set((state) => {
           // Immer 草稿階段 → console.log 看不到正常資料
-        console.log("draft:", state);               // Proxy
-        console.log("original:", original(state));  // 真正物件（像 RTK current）
+          console.log("draft:", state);               // Proxy
+          console.log("original:", original(state));  // 真正物件（像 RTK current）
 
           const existing = state.items.find((item) => item.product.id === product.id)
 

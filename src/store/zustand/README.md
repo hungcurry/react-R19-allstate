@@ -23,7 +23,7 @@ import { useCartStore } from '@/store/zustand/useCartStore';
 export default function Demo() {
     // 禁止解構 useStore()，一律用 selector 精準訂閱，
     // 避免整個 store 被訂閱造成無效 rerender。
-    // vue用法 : const { updateTodo } = TodoStore()
+    // ❌ vue用法 : const { updateTodo } = TodoStore()
     
     // React正確用法
     const addToCart = useCartStore(s => s.addToCart);
